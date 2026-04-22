@@ -1,0 +1,43 @@
+using System;
+
+abstract class Payment
+{
+    public abstract void Pay(double amount);
+}
+
+class CreditCard : Payment
+{
+    public override void Pay(double amount)
+    {
+        Console.WriteLine("Paid " + amount + " using Credit Card");
+    }
+}
+
+class UPI : Payment
+{
+    public override void Pay(double amount)
+    {
+        Console.WriteLine("Paid " + amount + " using UPI");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter amount: ");
+        double amt = double.Parse(Console.ReadLine());
+
+        Console.Write("Choose payment (1-Card, 2-UPI): ");
+        int choice = int.Parse(Console.ReadLine());
+
+        Payment p;
+
+        if (choice == 1)
+            p = new CreditCard();
+        else
+            p = new UPI();
+
+        p.Pay(amt);
+    }
+}
