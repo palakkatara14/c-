@@ -1,0 +1,56 @@
+using System;
+
+interface IDevice
+{
+    void TurnOn();
+}
+
+class Bulb : IDevice
+{
+    public void TurnOn()
+    {
+        Console.WriteLine("Bulb ON");
+    }
+}
+
+class Fan : IDevice
+{
+    public void TurnOn()
+    {
+        Console.WriteLine("Fan ON");
+    }
+}
+
+class Switch
+{
+    private IDevice device;
+
+    public Switch(IDevice device)
+    {
+        this.device = device;
+    }
+
+    public void Operate()
+    {
+        device.TurnOn();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Choose device (1-Bulb, 2-Fan): ");
+        int choice = int.Parse(Console.ReadLine());
+
+        IDevice device;
+
+        if (choice == 1)
+            device = new Bulb();
+        else
+            device = new Fan();
+
+        Switch s = new Switch(device);
+        s.Operate();
+    }
+}
