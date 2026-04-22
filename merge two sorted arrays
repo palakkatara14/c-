@@ -1,0 +1,48 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+
+class main {
+   static void Main(string[] args) {
+		int n1=Convert.ToInt32(Console.ReadLine());
+		int[] arr1=new int[n1];
+		for(int i=0;i<n1;i++){
+		    arr1[i]=Convert.ToInt32(Console.ReadLine());
+		}
+		
+		int n2=Convert.ToInt32(Console.ReadLine());
+		int[] arr2=new int[n2];
+		for(int i=0;i<n2;i++){
+		    arr2[i]=Convert.ToInt32(Console.ReadLine());
+		}
+		
+		int[] merged=new int[n1+n2];
+		int i1=0;
+		int i2=0;
+		int k=0;
+		while(i1<n1 && i2<n2){
+		    if(arr1[i1]<=arr2[i2]){
+		        merged[k++]=arr1[i1++];
+		    }
+		    else{
+		        merged[k++]=arr2[i2++];
+		    }
+		}
+		while(i1<n1){
+		   merged[k++]=arr1[i1++];
+		}
+		while(i2<n2){
+		    merged[k++]=arr2[i2++];
+		}
+		
+		foreach(int num in merged){
+		    Console.Write(num+" ");
+		}
+	}
+}
+
+
+
+
