@@ -1,0 +1,35 @@
+using System;
+
+class Remote
+{
+    public void ChangeChannel(int channel)
+    {
+        Console.WriteLine("Channel changed to: " + channel);
+    }
+}
+
+class VolumeControl
+{
+    public void SetVolume(int volume)
+    {
+        Console.WriteLine("Volume set to: " + volume);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter channel: ");
+        int ch = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter volume: ");
+        int vol = int.Parse(Console.ReadLine());
+
+        Remote r = new Remote();
+        VolumeControl v = new VolumeControl();
+
+        r.ChangeChannel(ch);
+        v.SetVolume(vol);
+    }
+}
